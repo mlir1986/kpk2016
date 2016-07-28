@@ -4,7 +4,7 @@ from time import sleep
 def f(x):
     return x*x
 
-
+dm_scale(20)
 x = -5.0
 to_point(x, f(x))
 pen_down()
