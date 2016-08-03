@@ -1,48 +1,25 @@
 import tkinter
 
-def button1_command():
-    print ("button1 default command")
-
-
-def print_hello(event):
-#    print(event.keycode)
-    print(event.num)
-    print(event.x, event.y)
-#    print(event.x_root, event.y_root)
-    me = event.widget
-
-    # что можно делать с me?
-    if me == button1:
-        print ("Hello")
-    elif me == button2:
-        print ("You pressed button2")
-    else:
-        raise ValueError()
-
-
-def init_main_window():
+def click_ball(event):
     """
-    Инициализация главного окна, создание и упаковка виджетов
+    Обработчик событий мышки игрового холста
+    :param event: событие с координатами клика
     :return:
     """
-    global root, button1, button2, label, text, scale
-    root = tkinter.Tk()
-    button1 = tkinter.Button(root, text="Button 1", command=button1_command)
-    button1.bind("<Button>", print_hello)
 
-    button2 = tkinter.Button(root, text="Button 2")
-    button2.bind("<Button>", print_hello)
+    # event.x, event.y)
 
-    variable = tkinter.IntVar(0)
-    label = tkinter.Label(root, textvariable=variable)
-    scale = tkinter.Scale(root, orient=tkinter.HORIZONTAL,length=300,from_=0,to=100, tickinterval=10,resolution=5, variable=variable)
-    text = tkinter.Entry(root, textvariable=variable)
-    for obj in button1, button2, label, scale,text:
-        obj.pack()
+def create_random_ball():
+    canvas.create_oval(x, y, x+2*R, y+2*R, width=2, fill=random_color())
+
+
+root = tkinter.Tk()
+
+canvas = tkinter.Canvas(root, background='orange', width=400, height=400)
+canvas.bind("<Motion>", paint)
+canvas.pack()
 
 
 
-
-if __name__ == "__main__":
-    init_main_window()
-    root.mainloop()
+root.mainloop()
+print("Эта строка будет достигнута при выходе")
