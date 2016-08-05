@@ -24,8 +24,8 @@ def click_ball(event):
 
 def move_all_balls(event):
     for obj in canvas.find_all():
-        dx = randint(-1,1)
-        dy = randint(-1,1)
+        dx = randint(-2,2)
+        dy = randint(-2,2)
         canvas.move(obj, dx, dy)
 
 def create_random_ball():
@@ -56,8 +56,6 @@ def init_game():
 
 def init_main_window():
     global root, canvas
-
-
     root = tkinter.Tk()
     canvas = tkinter.Canvas(root, background='orange', width=400, height=400)
     canvas.bind("<Button>", click_ball)
